@@ -11,9 +11,16 @@ and create separate light and dark themes for each color palette.
 
 Anyway, you can check these out:
 
-* [/src/styles/styles_newer.scss] - clear and easy styling for newer browsers
-* [/src/styles/styles_older.scss] - styles for older browsers that can be finicky and requires targetting each combination of brightness and color with it's own theme
-* [/src/styles/styles_older_container.scss] - not used, trying to use css `@container` at-rule to mimic the use of `color-scheme`, which unfortunately doesn't work with `style()` in older browsers either.   The technique might be useful for some other purpose though...
+- [styles.scss](/src/styles.scss) - Main stylesheet, includes both below which use @supports so only the styles in one should be used based on browser support for 'light-dark()'
+- [styles_newer.scss](/src/styles_newer.scss) - clear and easy styling for newer browsers
+- [styles_older.scss](/src/styles_older.scss) - styles for older browsers that can be finicky and requires targetting each combination of brightness and color with it's own theme
+
+
+Also I was working on this until I saw that the older browser I was targeting
+didn't support `@container style(--var-name: value)` either.  The technique
+might be useful for some other purpose though...
+
+- [styles_older_container.scss](src/styles_older_container.scss) - not used, trying to use css `@container` at-rule to mimic the use of `color-scheme`
 
 The main [/src/styles/styles.scss] loads both of the files which use the css
 `@support` at-rule to only apply the one based on support for the `light-dark()`
@@ -23,17 +30,9 @@ function.
 
 I setup pages under repo settings on github.com.
 
-I ran:
+I installed for publishing:  `ng add angular-cli-ghpages`
 
-    ng add angular-cli-ghpages
+I deployed with: `ng deploy --base-href=/amdark/`
 
-I deployed with:
-
-    ng deploy --base-href=/amdark/
-
-An action 'pages-build-deployment' appears under the 'actions' tab on my 
-repo.
-
-It shows the url under deploy:
-
-    https://jasongoemaat.github.io/amdark/
+An action 'pages-build-deployment' appears under the 'actions' tab on my
+repo showing it being deployed with the url: https://jasongoemaat.github.io/amdark/
