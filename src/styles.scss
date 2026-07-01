@@ -1,1 +1,109 @@
 /* You can add global styles to this file, and also import other style files */
+
+// @use 'styles_newer.scss';
+
+@use '@angular/material' as mat;
+
+:root {
+    @include mat.theme((color: (
+                theme-type: dark,
+                primary: mat.$azure-palette,
+                tertiary: mat.$blue-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Courier New, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+            
+    color-scheme: light dark;
+    @include mat.theme((color: (primary: mat.$azure-palette,
+                tertiary: mat.$blue-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Courier New, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+}
+
+body {
+    color-scheme: light dark;
+    font: var(--mat-sys-body-medium);
+}
+
+.green {
+    @include mat.theme((color: (primary: mat.$green-palette,
+                tertiary: mat.$blue-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Courier New, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+}
+
+.orange {
+    @include mat.theme((color: (primary: mat.$orange-palette,
+                tertiary: mat.$blue-palette,
+                secondary: mat.$cyan-palette,
+                special: mat.$azure-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Courier New, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+}
+
+.dark {
+    color-scheme: dark;
+}
+
+.light {
+    color-scheme: light;
+}
+
+.primary {
+    background-color: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
+    padding: 1rem;
+}
+
+.my-container {
+    margin: 2rem;
+    border: solid 1px var(--mat-sys-on-background);
+    border-radius: 1rem;
+    background-color: var(--mat-sys-background);
+    color: var(--mat-sys-on-background);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    text-align: center;
+
+    &>* {
+        flex: 1 0 auto;
+    }
+}
+
+// set colors on body tag to be inherited by default
+body {
+    background-color: var(--mat-sys-background);
+    // color: var(--mat-sys-on-background);
+    color: var(--mat-sys-primary);
+}
+
+h1,h2,h3,h4,h5,h6 { color: var(--mat-sys-primary);}
+
+h1 {
+    font-size: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.my-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
