@@ -33,19 +33,20 @@ export class App {
   constructor() {
     effect(() => {
       const mode = this.rootMode();
-      this.doc.body.classList.remove('light');
-      this.doc.body.classList.remove('dark');
+      this.doc.documentElement.classList.remove('light');
+      this.doc.documentElement.classList.remove('dark');
       if (mode?.length) {
-        this.doc.body.classList.add(mode);
+        this.doc.documentElement.classList.add(mode);
       }
       // this.doc.documentElement.setAttribute('data-mode', mode);
     });
     effect(() => {
       const theme = this.rootTheme();
-      this.doc.body.classList.remove('orange');
-      this.doc.body.classList.remove('green');
+      const ele = this.doc.documentElement;
+      ele.classList.remove('orange');
+      ele.classList.remove('green');
       if (theme?.length) {
-        this.doc.body.classList.add(`${theme}`);
+        ele.classList.add(`${theme}`);
       }
     });
   }

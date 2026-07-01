@@ -23,16 +23,37 @@
 </div>
 
 <div class="my-container orange">
-  <h2>in a 'my-container' with 'orange' class<br />(should be light orange in dark mode, dark orange in light mode)</h2>
-  <h2 class="green">Element has 'green' class<br />(should be light green in dark mode, dark green in light mode)</h2>
-  <h2 class="green light" data-mode="light">Element has 'green.light' classes<br />(should ALWAYS be dark green)</h2>
-  <div class="light" data-mode="light">
-    <h2 class="green">Element has 'green' class inside 'light' parent<br />(should ALWAYS be dark green)</h2>
-  </div>
-  <h2 class="green dark" data-mode="dark">Element has 'green.dark' classes<br />(should ALWAYS be light green)</h2>
-  <div class="sample primary">primary - parent is 'orange',<br />Background should be light/dark orange</div>
-  <div class="sample primary orange light" data-mode="light">primary.light - parent is orange<br />(should ALWAYS be
+  <!-- styles that should change when light/dark mode is changed on root -->
+  <h2>orange<br />(should be light orange in dark mode, dark orange in light mode)</h2>
+  <h2 class="green">orange green<br />(should be light green in dark mode, dark green in light mode)</h2>
+  <div class="sample primary">orange<br />Background should be light/dark orange</div>
+  <hr />
+  <div style="background-color: white; color: blue; font-size: 2rem; padding: 1rem;">--- Styles below shouldn't change
+    based on light/dark mode of root ---</div>
+  <!-- styles that SHOULDN'T change when light/dark mode is changed on root -->
+  <div class="sample primary light">orange light<br />(should ALWAYS be
     dark orange)</div>
-  <div class="sample primary orange dark" data-mode="dark">primary.dark - parent is orange<br />(should ALWAYS be light
+  <div class="sample primary dark">orange dark<br />(should ALWAYS be light
     orange)</div>
+  <h2 class="green light force">orange green.light<br />(should ALWAYS be dark green)
+  </h2>
+  <div class="light wtf">
+    <h2 class="green">dark orange light green<br />(should ALWAYS be dark green)</h2>
+    <div style="width: 20px; height: 20px;" class="wtf">WTF</div>
+  </div>
+  <h2 class="green dark">orange green.dark<br />(should ALWAYS be light green)</h2>
+  <hr/>
+  <div class="my-flex" style="flex-wrap: wrap;">
+    <div class="conditional container">container</div>
+    <div class="conditional notcontainer">notcontainer</div>
+  </div>
+  <div class="my-flex" style="flex-wrap: wrap;">
+    <div class="conditional style">style</div>
+    <div class="conditional notstyle">notstyle</div>
+  </div>
+  <div class="my-flex" style="flex-wrap: wrap;">
+    <div class="conditional lightdark">lightdark</div>
+    <div class="conditional notlightdark">notlightdark</div>
+  </div>
+</div>
   <router-outlet />

@@ -5,48 +5,54 @@
 @mixin my-theme($palette, $type) {
     @include mat.theme((color: (theme-type: $type,
                 primary: $palette,
-                tertiary: mat.$blue-palette ),
+                tertiary: mat.$blue-palette,
+            ),
             typography: (brand-family: 'Courier New, sans-serif',
                 plain-family: 'Roboto, sans-serif',
             ),
-            density: (scale: 0 // Choices range from -5 to 0
-            )));
+            density: (scale: 0, // Choices range from -5 to 0
+            ),
+        ));
 }
 
 @supports not (background-color: light-dark(#fff, #000)) {
     :root {
         @include my-theme(mat.$azure-palette, light);
 
-        .orange,
-        .orange .light,
-        .light .orange,
-        .orange.light {
-            @include my-theme(mat.$orange-palette, light);
-        }
-
-        .green,
-        .green .light,
-        .light .green,
-        .green.light {
-            @include my-theme(mat.$green-palette, light);
+        &.dark {
+            @include my-theme(mat.$azure-palette, dark);
         }
     }
 
+    .orange,
+    .orange .light,
+    .light .orange,
+    .orange.light,
+    .dark .orange.light {
+        @include my-theme(mat.$orange-palette, light);
+    }
 
-    .dark {
-        @include my-theme(mat.$azure-palette, dark);
+    .green,
+    .green .light,
+    .light .green,
+    .light.green,
+    .dark .light .green,
+    .dark .green .light,
+    .dark .light.green {
+        @include my-theme(mat.$green-palette, light);
     }
 
     .orange .dark,
     .dark .orange,
-    .orange.dark {
+    .orange.dark,
+    .light .orange.dark {
         @include my-theme(mat.$orange-palette, dark);
     }
 
     .green .dark,
     .dark .green,
-    .green.dark {
+    .green.dark,
+    .light .green.dark {
         @include my-theme(mat.$green-palette, dark);
     }
-
 }

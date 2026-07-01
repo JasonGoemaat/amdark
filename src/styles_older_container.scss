@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+@mixin my-theme($palette, $type) {
+    @include mat.theme((color: (theme-type: $type,
+                primary: $palette,
+                tertiary: mat.$blue-palette,
+            ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Roboto, sans-serif',
+            ),
+            density: (scale: 0, // Choices range from -5 to 0
+            ),
+        ));
+}
+
+@supports not (color: light-dark(#fff, #000)) {
+    :root {
+        --my-color-scheme: light;
+        --my-color-theme: azure;
+
+        @include my-theme(mat.$azure-palette, light);
+
+        &.dark {
+            @include my-theme(mat.$azure-palette, dark);
+        }
+
+        .azure {
+            --my-color-theme: azure;
+
+            @container not style(--my-color-scheme: dark) {
+                @include my-theme(mat.$azure-palette, light);
+            }
+
+            @container style(--my-color-scheme: dark) {
+                @include my-theme(mat.$azure-palette, dark);
+            }
+
+            &.light {
+                @include my-theme(mat.$azure-palette, light);
+            }
+
+            & .dark {
+                @include my-theme(mat.$azure-palette, dark);
+            }
+        }
+    }
+
+    .orange {
+        --my-color-theme: orange;
+
+        @container not style(--my-color-scheme: dark) {
+            @include my-theme(mat.$orange-palette, light);
+        }
+
+        @container style(--my-color-scheme: dark) {
+            @include my-theme(mat.$orange-palette, dark);
+        }
+
+        &.light {
+            @include my-theme(mat.$orange-palette, light);
+        }
+
+        &.dark {
+            @include my-theme(mat.$orange-palette, dark);
+        }
+    }
+
+    .green {
+        --my-color-theme: green;
+
+        @container not style(--my-color-scheme: dark) {
+            @include my-theme(mat.$green-palette, light);
+        }
+
+        @container style(--my-color-scheme: dark) {
+            @include my-theme(mat.$green-palette, dark);
+        }
+
+        &.light {
+            @include my-theme(mat.$green-palette, light);
+        }
+
+        &.dark {
+            @include my-theme(mat.$green-palette, dark);
+        }
+    }
+
+    .dark {
+        --my-color-scheme: dark;
+
+        @container style(--my-color-theme: azure) {
+            @include my-theme(mat.$azure-palette, dark);
+        }
+
+        @container style(--my-color-theme: green) {
+            @include my-theme(mat.$green-palette, dark);
+        }
+
+        @container style(--my-color-theme: orange) {
+            @include my-theme(mat.$orange-palette, dark);
+        }
+    }
+
+    .light {
+        --my-color-scheme: light;
+
+        @container style(--my-color-theme: azure) {
+            @include my-theme(mat.$azure-palette, light);
+        }
+
+        @container style(--my-color-theme: green) {
+            @include my-theme(mat.$green-palette, light);
+        }
+
+        @container style(--my-color-theme: orange) {
+            @include my-theme(mat.$orange-palette, light);
+        }
+    }
+}
