@@ -25,10 +25,13 @@
   :root {
     color-scheme: light dark;
     @include my-theme(mat.$azure-palette);
-    .orange { @include my-theme(mat.$orange-palette); }
-    .green { @include my-theme(mat.$green-palette); }
+    // .orange { @include my-theme(mat.$orange-palette); }
+    // .green { @include my-theme(mat.$green-palette); }
   }
-}
 
-.dark { color-scheme: only dark; }
-.light { color-scheme: only light; }
+  .azure { @include my-theme(mat.$azure-palette); }
+  .orange { @include my-theme(mat.$orange-palette); }
+  .green { @include my-theme(mat.$green-palette); }
+  .dark { color-scheme: only dark; }
+  .light { color-scheme: only light; }
+}

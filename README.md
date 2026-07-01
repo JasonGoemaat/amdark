@@ -1,59 +1,39 @@
 # AmDark
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.0.
+Project for me to test out angular material M3 theming and trying to
+find a workaround for my phone being on ios 16 and not supporting
+the newer (circa 2024) css `light-dark()` function.
 
-## Development server
+Live page: [https://jasongoemaat.github.io/amdark/](https://jasongoemaat.github.io/amdark/)
 
-To start a local development server, run:
+The problem is I can't target 'color-scheme' so I have to use css selectors,
+and create separate light and dark themes for each color palette.
 
-```bash
-ng serve
-```
+Anyway, you can check these out:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* [/src/styles/styles_newer.scss] - clear and easy styling for newer browsers
+* [/src/styles/styles_older.scss] - styles for older browsers that can be finicky and requires targetting each combination of brightness and color with it's own theme
+* [/src/styles/styles_older_container.scss] - not used, trying to use css `@container` at-rule to mimic the use of `color-scheme`, which unfortunately doesn't work with `style()` in older browsers either.   The technique might be useful for some other purpose though...
 
-## Code scaffolding
+The main [/src/styles/styles.scss] loads both of the files which use the css
+`@support` at-rule to only apply the one based on support for the `light-dark()`
+function.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## github pages
 
-```bash
-ng generate component component-name
-```
+I setup pages under repo settings on github.com.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+I ran:
 
-```bash
-ng generate --help
-```
+    ng add angular-cli-ghpages
 
-## Building
+I deployed with:
 
-To build the project run:
+    ng deploy --base-href=/amdark/
 
-```bash
-ng build
-```
+An action 'pages-build-deployment' appears under the 'actions' tab on my 
+repo.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+It shows the url under deploy:
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    https://jasongoemaat.github.io/amdark/

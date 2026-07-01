@@ -10,50 +10,27 @@
 .conditional {
     background-color: black;
     color: red;
+    opacity: 0.5;
     padding: 1rem;
     display: block;
 }
 
-// .wtf {
-//     color: blue;
-// }
-
 @supports (container-type: inline-size) {
-    .conditional.container { color: green; }
+    .conditional.container { color: green; opacity: 1; }
 }
 
 @supports not (container-type: inline-size) {
-    .conditional.notcontainer { color: green; }
+    .conditional.notcontainer { color: green; opacity: 1; }
 }
 
 @supports (color: light-dark(#fff, #000)) {
-    .conditional.lightdark { color: green; }
+    .conditional.lightdark { color: green; opacity: 1; }
 }
 
 @supports not (color: light-dark(#fff, #000)) {
-    .conditional.notlightdark { color: green; }
+    .conditional.notlightdark { color: green; opacity: 1; }
 }
 
-@supports (container-type: inline-size) {
-    .conditional.container {
-        display: block;
-    }
-}
-
-@supports not (container-type: inline-size) {
-    .conditional.notcontainer {
-        display: block;
-    }
-}
-
-@supports (style(--my-color-scheme: dark)) {
-    .conditional.style { color: green; }
-}
-
-
-@supports not (style(--my-color-scheme: dark)) {
-    .conditional.notstyle { color: green; }
-}
 
 body {
     font: var(--mat-sys-body-medium);
