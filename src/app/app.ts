@@ -38,6 +38,7 @@ export class App {
       if (mode?.length) {
         this.doc.body.classList.add(mode);
       }
+      // this.doc.documentElement.setAttribute('data-mode', mode);
     });
     effect(() => {
       const theme = this.rootTheme();

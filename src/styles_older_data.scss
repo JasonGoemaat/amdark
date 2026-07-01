@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+@mixin my-theme($palette, $type) {
+    @include mat.theme((color: (theme-type: $type,
+                primary: $palette,
+                tertiary: mat.$blue-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Roboto, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+}
+
+// @supports not (background-color: light-dark(#fff, #000)) {
+:root {
+    @include my-theme(mat.$azure-palette, light);
+
+    .orange, .orange .light, .light .orange, .orange.light {
+        @include my-theme(mat.$orange-palette, light);
+    }
+
+    .green, .green .light, .light .green, .green.light {
+        @include my-theme(mat.$green-palette, light);
+    }
+}
+
+
+[data-mode="dark"] { @include my-theme(mat.$azure-palette, dark); }
+
+.orange [data-mode="dark"], [data-mode="dark"] .orange, .orange[data-mode="dark"],
+.orange[data-mode="dark"].dark {
+    @include my-theme(mat.$orange-palette, dark);
+}
+
+.green [data-mode="dark"], [data-mode="dark"] .green, .green[data-mode="dark"],
+.green.dark, .green.dark[data-mode="dark"] {
+    @include my-theme(mat.$green-palette, dark);
+}
+
+// }

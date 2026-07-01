@@ -1,32 +1,38 @@
 <div class="my-container">
-  <h2>in a 'my-container' without any additional class</h2>
+  <h2>in a 'my-container' without any additional class, should use default theme or theme/mode specified on parent</h2>
   <app-buttons></app-buttons>
 </div>
-<div class="my-container orange">
-  <h2>in a 'my-container' with 'orange' class</h2>
-  <h2 class="green">Element has 'green' class</h2>
-  <h2 class="green light">Element has 'green.light' classes</h2>
-  <div class="light"><h2 class="green">Element has 'green' class inside 'light' parent</h2></div>
-  <h2 class="green dark">Element has 'green.dark' classes</h2>
-  <div class="sample primary">primary - parent is 'orange'</div>
-  <div class="sample primary light">primary.light - parent is orange (should be dark orange)</div>
-  <div class="sample primary dark">primary.dark - parent is orange (should be light orange)</div>
+<div class="my-container">
   <div>
     Body mode: {{ displayRootMode() }}
-  </div>
-  <div class="my-flex">
-    <button matButton="filled" (click)="rootMode.set('')">Clear html class></button>
-    <button matButton="filled" (click)="rootMode.set('light')">Set 'light'</button>
-    <button matButton="filled" (click)="rootMode.set('dark')">Set 'dark'</button>
+    <div class="my-flex">
+      <button matButton="filled" (click)="rootMode.set('')">Clear html class</button>
+      <button matButton="filled" (click)="rootMode.set('light')">Set 'light'</button>
+      <button matButton="filled" (click)="rootMode.set('dark')">Set 'dark'</button>
+    </div>
   </div>
   <div>
-    Body theme: {{ displayRootTheme() }}
-  </div>
-  <div class="my-flex">
-    <button matButton="filled" (click)="rootTheme.set('')">Clear html class></button>
-    <button matButton="filled" (click)="rootTheme.set('orange')">Set 'orange'</button>
-    <button matButton="filled" (click)="rootTheme.set('green')">Set 'green'</button>
+    <div>Body theme: {{ displayRootTheme() }}
+      <div class="my-flex">
+        <button matButton="filled" (click)="rootTheme.set('')">Clear html class></button>
+        <button matButton="filled" (click)="rootTheme.set('orange')">Set 'orange'</button>
+        <button matButton="filled" (click)="rootTheme.set('green')">Set 'green'</button>
+      </div>
+    </div>
   </div>
 </div>
 
-<router-outlet />
+<div class="my-container orange">
+  <h2>in a 'my-container' with 'orange' class<br />(should be light orange in dark mode, dark orange in light mode)</h2>
+  <h2 class="green">Element has 'green' class<br />(should be light green in dark mode, dark green in light mode)</h2>
+  <h2 class="green light" data-mode="light">Element has 'green.light' classes<br />(should ALWAYS be dark green)</h2>
+  <div class="light" data-mode="light">
+    <h2 class="green">Element has 'green' class inside 'light' parent<br />(should ALWAYS be dark green)</h2>
+  </div>
+  <h2 class="green dark" data-mode="dark">Element has 'green.dark' classes<br />(should ALWAYS be light green)</h2>
+  <div class="sample primary">primary - parent is 'orange',<br />Background should be light/dark orange</div>
+  <div class="sample primary orange light" data-mode="light">primary.light - parent is orange<br />(should ALWAYS be
+    dark orange)</div>
+  <div class="sample primary orange dark" data-mode="dark">primary.dark - parent is orange<br />(should ALWAYS be light
+    orange)</div>
+  <router-outlet />

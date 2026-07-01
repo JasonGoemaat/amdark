@@ -2,64 +2,51 @@
 
 @use '@angular/material' as mat;
 
+@mixin my-theme($palette, $type) {
+    @include mat.theme((color: (theme-type: $type,
+                primary: $palette,
+                tertiary: mat.$blue-palette ),
+            typography: (brand-family: 'Courier New, sans-serif',
+                plain-family: 'Roboto, sans-serif',
+            ),
+            density: (scale: 0 // Choices range from -5 to 0
+            )));
+}
+
 @supports not (background-color: light-dark(#fff, #000)) {
     :root {
-        @include mat.theme((color: (theme-type: light,
-                    primary: mat.$azure-palette,
-                    tertiary: mat.$blue-palette ),
-                typography: (brand-family: 'Courier New, sans-serif',
-                    plain-family: 'Courier New, sans-serif',
-                ),
-                density: (scale: 0 // Choices range from -5 to 0
-                )));
+        @include my-theme(mat.$azure-palette, light);
+
+        .orange,
+        .orange .light,
+        .light .orange,
+        .orange.light {
+            @include my-theme(mat.$orange-palette, light);
+        }
+
+        .green,
+        .green .light,
+        .light .green,
+        .green.light {
+            @include my-theme(mat.$green-palette, light);
+        }
     }
 
-    .orange, .orange.light {
-        @include mat.theme((color: (theme-type: light,
-                    primary: mat.$orange-palette,
-                    tertiary: mat.$blue-palette,
-                    secondary: mat.$cyan-palette,
-                    special: mat.$azure-palette ),
-                typography: (brand-family: 'Courier New, sans-serif',
-                    plain-family: 'Courier New, sans-serif',
-                ),
-                density: (scale: 0 // Choices range from -5 to 0
-                )));
+
+    .dark {
+        @include my-theme(mat.$azure-palette, dark);
     }
 
-    .dark .orange, .orange .dark, .orange.dark {
-        @include mat.theme((color: (theme-type: dark,
-                    primary: mat.$orange-palette,
-                    tertiary: mat.$blue-palette,
-                    secondary: mat.$cyan-palette,
-                    special: mat.$azure-palette ),
-                typography: (brand-family: 'Courier New, sans-serif',
-                    plain-family: 'Courier New, sans-serif',
-                ),
-                density: (scale: 0 // Choices range from -5 to 0
-                )));
+    .orange .dark,
+    .dark .orange,
+    .orange.dark {
+        @include my-theme(mat.$orange-palette, dark);
     }
 
-    .green, .green.light {
-
-        @include mat.theme((color: (theme-type: light,
-                    primary: mat.$green-palette,
-                    tertiary: mat.$blue-palette ),
-                typography: (brand-family: 'Courier New, sans-serif',
-                    plain-family: 'Courier New, sans-serif',
-                ),
-                density: (scale: 0 // Choices range from -5 to 0
-                )));
+    .green .dark,
+    .dark .green,
+    .green.dark {
+        @include my-theme(mat.$green-palette, dark);
     }
 
-    .dark .green, .green .dark, .green.dark {
-        @include mat.theme((color: (theme-type: dark,
-                    primary: mat.$green-palette,
-                    tertiary: mat.$blue-palette ),
-                typography: (brand-family: 'Courier New, sans-serif',
-                    plain-family: 'Courier New, sans-serif',
-                ),
-                density: (scale: 0 // Choices range from -5 to 0
-                )));
-    }
 }

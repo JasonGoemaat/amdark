@@ -2,6 +2,7 @@
 
 // @use 'styles_newer.scss';
 
+// @use 'styles_older_data.scss';
 @use 'styles_older.scss';
 @use 'styles_newer.scss';
 
@@ -41,7 +42,7 @@ body {
     color: var(--mat-sys-primary);
 }
 
-h1,h2,h3,h4,h5,h6 { color: var(--mat-sys-primary);}
+h1,h2,h3,h4,h5,h6 { color: var(--mat-sys-primary); margin: 0;}
 
 h1 {
     font-size: 2rem;
