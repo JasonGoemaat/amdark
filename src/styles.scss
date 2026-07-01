@@ -2,62 +2,11 @@
 
 // @use 'styles_newer.scss';
 
-@use '@angular/material' as mat;
-
-:root {
-    @include mat.theme((color: (
-                theme-type: dark,
-                primary: mat.$azure-palette,
-                tertiary: mat.$blue-palette ),
-            typography: (brand-family: 'Courier New, sans-serif',
-                plain-family: 'Courier New, sans-serif',
-            ),
-            density: (scale: 0 // Choices range from -5 to 0
-            )));
-            
-    color-scheme: light dark;
-    @include mat.theme((color: (primary: mat.$azure-palette,
-                tertiary: mat.$blue-palette ),
-            typography: (brand-family: 'Courier New, sans-serif',
-                plain-family: 'Courier New, sans-serif',
-            ),
-            density: (scale: 0 // Choices range from -5 to 0
-            )));
-}
+@use 'styles_older.scss';
+@use 'styles_newer.scss';
 
 body {
-    color-scheme: light dark;
     font: var(--mat-sys-body-medium);
-}
-
-.green {
-    @include mat.theme((color: (primary: mat.$green-palette,
-                tertiary: mat.$blue-palette ),
-            typography: (brand-family: 'Courier New, sans-serif',
-                plain-family: 'Courier New, sans-serif',
-            ),
-            density: (scale: 0 // Choices range from -5 to 0
-            )));
-}
-
-.orange {
-    @include mat.theme((color: (primary: mat.$orange-palette,
-                tertiary: mat.$blue-palette,
-                secondary: mat.$cyan-palette,
-                special: mat.$azure-palette ),
-            typography: (brand-family: 'Courier New, sans-serif',
-                plain-family: 'Courier New, sans-serif',
-            ),
-            density: (scale: 0 // Choices range from -5 to 0
-            )));
-}
-
-.dark {
-    color-scheme: dark;
-}
-
-.light {
-    color-scheme: light;
 }
 
 .primary {

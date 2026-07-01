@@ -6,9 +6,11 @@
   <h2>in a 'my-container' with 'orange' class</h2>
   <h2 class="green">Element has 'green' class</h2>
   <h2 class="green light">Element has 'green.light' classes</h2>
+  <div class="light"><h2 class="green">Element has 'green' class inside 'light' parent</h2></div>
   <h2 class="green dark">Element has 'green.dark' classes</h2>
   <div class="sample primary">primary - parent is 'orange'</div>
   <div class="sample primary light">primary.light - parent is orange (should be dark orange)</div>
+  <div class="sample primary dark">primary.dark - parent is orange (should be light orange)</div>
   <div>
     Body mode: {{ displayRootMode() }}
   </div>
